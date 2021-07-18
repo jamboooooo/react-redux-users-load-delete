@@ -17,28 +17,41 @@ function Users() {
 
   return (
     <div>
-      {loading ? (
-        "Loading..."
-      ) : (
-        <ul>
-          {users.map((user) => {
-            return (
-              <li key={user.id}>
-                {user.name}
-                ---
-                <button
-                  onClick={() => handleDelete(user.id)}
-                  disabled={user.deleting}
-                >
-                  X
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      )}
+      {loading ? ("Loading...") : (
+        <table border='1'>
+            <thead>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                {users.map((user) => {
+                    return ( <tr key={user.id}>
+                        <td>
+                            {user.id}
+                        </td>
+                        <td>
+                            {user.name}
+                        </td>
+                        <td>
+                            {user.email}
+                        </td>
+                        <td>
+                            <button
+                                onClick={() => handleDelete(user.id)}
+                                disabled={user.deleting}
+                            >
+                                X
+                            </button>
+                        </td>
+                    </tr>
+                    )}
+                )}
+            </tbody>
+        </table>
+    )}
     </div>
-  );
-}
+)}
 
 export default Users;
